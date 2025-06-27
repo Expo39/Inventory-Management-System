@@ -1,6 +1,6 @@
 # Inventory Management System
 
-An inventory management system implemented in both **C++** and **Java**, demonstrating design patterns, protocol buffer serialisation, and gRPC communication.
+An inventory management system implemented in both **C++** and **Java**, demonstrating design patterns, protocol buffer serialisation and gRPC communication.
 
 ## Run the Applications
 
@@ -35,5 +35,7 @@ Both applications show:
 **Java:** `cd java-implementation && mvn exec:java -Dexec.mainClass="com.inventory.core.ProtobufTest"`
 
 ### gRPC Client-Server Demo
-**Server:** `cd java-implementation && mvn exec:java -Dexec.mainClass="com.inventory.core.GrpcServer"`  
-**Client:** `cd java-implementation && mvn exec:java -Dexec.mainClass="com.inventory.core.GrpcClient"`
+**C++ Server:** `cd cpp-implementation/build && ./grpc_server`  
+**C++ Client:** `cd cpp-implementation/build && ./state_demo` (requires server running)  
+**Java Server:** `cd java-implementation && mvn exec:java -Dexec.mainClass="com.inventory.core.GrpcServer"`  
+**Java Client:** `cd java-implementation && mvn exec:java -Dexec.mainClass="com.inventory.core.GrpcClient"`
