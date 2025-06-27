@@ -35,7 +35,16 @@ Both applications show:
 **Java:** `cd java-implementation && mvn exec:java -Dexec.mainClass="com.inventory.core.ProtobufTest"`
 
 ### gRPC Client-Server Demo
-**C++ Server:** `cd cpp-implementation/build && ./grpc_server`  
-**C++ Client:** `cd cpp-implementation/build && ./state_demo`
-**Java Server:** `cd java-implementation && mvn exec:java -Dexec.mainClass="com.inventory.core.GrpcServer"`  
-**Java Client:** `cd java-implementation && mvn exec:java -Dexec.mainClass="com.inventory.core.GrpcClient"`
+
+**C++ Server:**  
+`cd cpp-implementation/build && ./grpc_server`
+
+**C++ Client:**  
+`cd cpp-implementation/build && ./state_demo`
+
+**Java Server:**  
+`cd java-implementation && mvn exec:java -Dexec.mainClass="com.inventory.core.GrpcServer"`
+
+**Java Client:**  
+`cd java-implementation && mvn exec:java -Dexec.mainClass="com.inventory.core.GrpcClient"`
+
