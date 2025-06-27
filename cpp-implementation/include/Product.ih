@@ -1,0 +1,10 @@
+#include "Stationary.h"
+#include "PC_Games.h"
+#include "Guitars.h"
+#include "Electronics.h"
+#include "Clothing.h"
+#include "Books.h"
+
+#include <sstream>
+
+using namespace std;

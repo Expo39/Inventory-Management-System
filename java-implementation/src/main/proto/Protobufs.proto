@@ -1,0 +1,237 @@
+syntax = "proto3";
+
+package Protobufs;
+
+option java_package = "com.inventory.proto";
+option java_outer_classname = "InventoryProtos";
+
+// The Product message represents the basic details of a product.
+message Product {
+    int32 id = 1;
+    string name = 2;
+    double price = 3;
+    int32 volume = 4;
+    string supplier = 5;
+
+    oneof category {
+        Stationary stationary = 6;
+        PC_Games pc_games = 7;
+        Guitars guitars = 8;
+        Electronics electronics = 9;
+        Clothing clothing = 10;
+        Books books = 11;
+    }
+}
+
+// Represents the common fields of Stationary products.
+message Stationary {
+    string material = 1;
+    oneof type {
+        Notepads notepads = 2;
+        Pens pens = 3;
+    }
+}
+
+message PC_Games {
+    string genre = 1;
+    int32 ageRating = 2;
+    oneof type {
+        Action action = 3;
+        Strategy strategy = 4;
+    }
+}
+
+message Guitars {
+    string material = 1;
+    int32 stringCount = 2;
+    oneof type {
+        Acoustic acoustic = 3;
+        Electric electric = 4;
+    }
+}
+
+message Electronics {
+    string brand = 1;
+    int32 warranty = 2;
+    oneof type {
+        Laptops laptops = 3;
+        Phones phones = 4;
+    }
+}
+
+message Clothing {
+    string size = 1;
+    string material = 2;
+    oneof type {
+        Dresses dresses = 3;
+        Tshirts tshirts = 4;
+    }
+}
+
+message Books {
+    string author = 1;
+    string publisher = 2;
+    oneof type {
+        Fiction fiction = 3;
+        NonFiction nonfiction = 4;
+    }
+}
+
+// Represents a Notepad product.
+message Notepads {
+    int32 pages = 1;
+}
+
+// Represents a Pen product.
+message Pens {
+    string inkType = 1;
+}
+
+
+// Represents an Action game.
+message Action {
+    bool multiplayer = 1;
+}
+
+// Represents a Strategy game.
+message Strategy {  
+    string theme = 1;
+}
+
+
+// Represents an Electric guitar.
+message Electric {
+    string pickupType = 1;
+}
+
+// Represents an Acoustic guitar.
+message Acoustic {
+    bool hasPickup = 1;    
+}
+
+// Represents a Laptop.
+message Laptops {
+    string operatingSystem = 1;   
+}
+
+// Represents a Phone.
+message Phones {
+    int32 year = 1;               
+    int32 storage = 2;            
+}
+
+message Dresses {
+    string type = 1;
+}
+
+message Tshirts {
+    bool can_be_ironed = 1;
+}
+
+message Fiction {
+    string genre = 1;
+}
+
+message NonFiction {
+    string field = 1;
+}
+
+// Enumerations for different types of land, ocean, and air transport.
+enum LandType {
+    TRUCK = 0;
+    CAR = 1;
+    PICKUP = 2;
+}
+
+enum OceanType {
+    FREIGHTER = 0;
+    SMALL_SHIP = 1;
+    BOAT = 2;
+}
+
+enum AirType {
+    CARGO_PLANE = 0;
+    COMMERCIAL_PLANE = 1;
+    HELICOPTER = 2;
+}
+
+// Transport property message
+message TransportProperty {
+    double distance = 1; // Distance in km
+    double cost = 2;  // Cost per km
+    double price = 3;
+}
+
+// Base Transport message with oneof for each transport medium
+message Transport {
+    oneof transport_type {
+        Land land = 1;
+        Ocean ocean = 2;
+        Air air = 3;
+    }
+}
+
+message Land {
+    LandType type = 1;
+    string roadStages = 2;
+    TransportProperty transport_property = 3; // Include transport property here
+}
+
+message Ocean {
+    OceanType type = 1;
+    string seaRoutes = 2;
+    TransportProperty transport_property = 3; // Include transport property here
+}
+
+message Air {
+    AirType type = 1;
+    string airRoutes = 2;
+    TransportProperty transport_property = 3; // Include transport property here
+}
+
+// The Packaging message represents the details of a product or shipment packaging.
+message Packaging {
+    int32 capacity = 1;     // Capacity of the packaging
+    string material = 2;    // Material of the packaging
+    string type = 3;        // Type of packaging
+    int32 matcost = 4;
+    int32 typecost = 5;
+    int32 price = 6;
+}
+
+// The Stock message represents a collection of products.
+message Stock {
+    // Map of product ID to Product
+    map<int32, Product> products = 1; 
+}
+
+// Enumeration for possible statuses of a shipment
+enum ShipmentStatus {
+    CREATED = 0;
+    DISPATCHED = 1;
+    CANCELLED = 2;
+}
+
+// Shipment message definition
+message Shipment {
+    int32 shipmentId = 1;  
+    repeated Product products = 2;  // Shipment may have multiple products
+    Packaging packaging = 3;  
+    Transport transportMethod = 4; 
+    ShipmentStatus status = 5; 
+    double totalcost = 6;
+    string dispatchTime = 7;
+    string estimatedDeliveryTime = 8;
+}
+
+// Represents the ShipmentsDB with additional attributes.
+message ShipmentsDB {
+    Shipment shipment = 1;  // The original Shipment object
+    double discountRate = 2;       
+    bool routeClosure = 3;         
+}
+
+// All the shipments
+message AllShipments {
+    map<int32, Shipment> shipments = 1; 
+}

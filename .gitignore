@@ -1,0 +1,47 @@
+# Build directories
+build/
+target/
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# C++ specific
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+
+# Java specific
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+
+# Package Files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# State files
+*.bin
+app_state.bin
